@@ -32,14 +32,14 @@ def read_text_file(file_path):
         raise FileNotFoundError(f"Could not find file: {file_path}")
 
 
-def _get_words(text):
+def get_words(text):
     """Return all words from the text with punctuation removed."""
     return WORD_PATTERN.findall(text.lower())
 
 
 def count_specific_word(text, word):
     """Count the number of times a specific word appears in the text."""
-    words = _get_words(text)
+    words = get_words(text)
     target_word = word.lower()
     count = 0
     index = 0
@@ -54,7 +54,7 @@ def count_specific_word(text, word):
 
 def identify_most_common_word(text):
     """Identify the most common word in the text."""
-    words = _get_words(text)
+    words = get_words(text)
 
     if words:
         word_counts = Counter(words)
@@ -65,7 +65,7 @@ def identify_most_common_word(text):
 
 def calculate_average_word_length(text):
     """Calculate the average length of all words in the text."""
-    words = _get_words(text)
+    words = get_words(text)
 
     if not words:
         return 0
@@ -89,7 +89,7 @@ def count_paragraphs(text):
     return max(count, 1)
 
 
-def _protect_abbreviation_periods(text):
+def protect_abbreviation_periods(text):
     """Protect periods in common abbreviations before sentence splitting."""
     protected_text = text
 
@@ -111,7 +111,7 @@ def count_sentences(text):
     sentence_count = 0
 
     for paragraph in paragraphs:
-        protected_paragraph = _protect_abbreviation_periods(paragraph.strip())
+        protected_paragraph = protect_abbreviation_periods(paragraph.strip())
         sentences = SENTENCE_PATTERN.findall(protected_paragraph)
 
         for sentence in sentences:
