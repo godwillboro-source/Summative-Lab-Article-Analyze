@@ -20,6 +20,3 @@ The program below is a text analyser that prompts you for a word to search and g
 - count_sentences counts sentences while still ignoring periods inside common abbreviations.
 - main which houses the main workings of the cli program
 
-
-# AI usage
-- Building upon existing Python coding foundations, AI was utilized throughout coding as an architectural sounding board and code-review tool
